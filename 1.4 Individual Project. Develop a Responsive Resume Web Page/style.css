@@ -1,0 +1,179 @@
+* {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.fullname {
+  font-size: 58px;
+  text-decoration: underline;
+  color: #323b4c;
+}
+
+.firstname {
+  font-style: italic;
+}
+
+.lastname {
+  font-weight: bold;
+}
+
+.white-line {
+  border-color: white;
+}
+
+.blue-line {
+  border-color: #323b4c;
+}
+
+main {
+  padding: 20px;
+  color: #737373;
+}
+
+aside {
+  padding: 20px;
+  min-height: 100vh;
+  min-width: 200px;
+  background: #323b4c;
+}
+.profile-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.profile-pic {
+  border-radius: 50%;
+  width: 150px;
+  max-width: 150px;
+  margin: auto;
+}
+
+.work-exp li > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-exp {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.work-exp li {
+  position: relative;
+  margin-top: 20px;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.work-exp li:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  border-radius: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #323b4c;
+}
+
+.work-exp li:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 2.5px;
+  width: 1px;
+  height: calc(100% + 30px);
+  background-color: #323b4c;
+}
+
+.work-exp li:last-child::before {
+  height: 100%;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+main {
+  padding-right: 20px;
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-media {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.social-media li:not(:last-child) {
+  margin-right: 5px;
+}
+
+main .header-text {
+  color: #323b4c;
+}
+
+aside .header-text {
+  color: white;
+}
+
+section {
+  margin-top: 15px;
+}
+
+aside > section > ul {
+  padding: 0;
+}
+
+.position {
+  color: #323b4c;
+}
+
+.flex-li {
+  display: flex;
+  flex-direction: column;
+}
+
+aside > section > ul > li {
+  margin-top: 5px;
+}
+
+aside .subtitle {
+  font-size: 12px;
+  color: white;
+}
+
+aside .caption {
+  font-size: 10px;
+  color: white;
+}
+
+header > div {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+}

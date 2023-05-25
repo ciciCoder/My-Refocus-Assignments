@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <div id="show-results" class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h1>Registered User</h1>
+          </div>
+          <hr />
+          <div class="row g-2">
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>First Name</label>
+                <div class="form-control" data-model="firstName">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Middle Name</label>
+                <div class="form-control" data-model="middleName">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Last Name</label>
+                <div class="form-control" data-model="lastName">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Birthday</label>
+                <div class="form-control" data-model="birthday">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Email</label>
+                <div class="form-control" data-model="email">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Region</label>
+                <div class="form-control" data-model="region">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Province</label>
+                <div class="form-control" data-model="province">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Barangay</label>
+                <div class="form-control" data-model="barangay">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Street</label>
+                <div class="form-control" data-model="street">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Gender</label>
+                <div class="form-control" data-model="gender">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Vaccination Brand (Dose 1)</label>
+                <div class="form-control" data-model="vaccinationBrand1">
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Date of Vaccination (Dose 1)</label>
+                <div class="form-control" data-model="dateVaccination1">
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Vaccination (Dose 1) Site</label>
+                <div class="form-control" data-model="vaccinationSite1">
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <label>Did you already get your second vaccination</label>
+                <div class="form-control" data-model="secondVaccination">
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button id="register-again" class="btn btn-primary">
+                Register Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="registration-form" class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h1>Registration Form</h1>
+          </div>
+          <hr />
+          <form name="personInfo">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="row g-2">
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="first-name"
+                      name="firstName"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="middle-name">Middle Name:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="middle-name"
+                      name="middleName"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="last-name">Last Name:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="last-name"
+                      name="lastName"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="birthday">Birthday:</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="birthday"
+                      name="birthday"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="region">Region:</label>
+                    <select
+                      id="region"
+                      class="form-control"
+                      name="region"
+                      required
+                    >
+                      <option value="">Select a region</option>
+                      <option value="Region I">Region I - Ilocos Region</option>
+                      <option value="Region II">
+                        Region II - Cagayan Valley
+                      </option>
+                      <option value="Region III">
+                        Region III - Central Luzon
+                      </option>
+                      <option value="Region IV">Region IV - CALABARZON</option>
+                      <option value="MIMAROPA">MIMAROPA Region</option>
+                      <option value="Region V">Region V - Bicol Region</option>
+                      <option value="Region VI">
+                        Region VI - Western Visayas
+                      </option>
+                      <option value="Region VII">
+                        Region VII - Central Visayas
+                      </option>
+                      <option value="Region VIII">
+                        Region VIII - Eastern Visayas
+                      </option>
+                      <option value="Region IX">
+                        Region IX - Zamboanga Peninsula
+                      </option>
+                      <option value="Region X">
+                        Region X - Northern Mindanao
+                      </option>
+                      <option value="Region XI">
+                        Region XI - Davao Region
+                      </option>
+                      <option value="Region XII">
+                        Region XII - SOCCSKSARGEN
+                      </option>
+                      <option value="Region XIII">Region XIII - Caraga</option>
+                      <option value="NCR">NCR - National Capital Region</option>
+                      <option value="CAR">
+                        CAR - Cordillera Administrative Region
+                      </option>
+                      <option value="BARMM">
+                        BARMM - Bangsamoro Autonomous Region in Muslim Mindanao
+                      </option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="province">Province:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="province"
+                      name="province"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="barangay">Barangay:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="barangay"
+                      name="barangay"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="street">Street:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="street"
+                      name="street"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group h-100">
+                    <label>Gender:</label>
+                    <div class="form-control">
+                      <div
+                        id="gender"
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="customer-control custom-radio">
+                          <input
+                            type="radio"
+                            class="custom-control-input"
+                            id="male"
+                            name="gender"
+                            value="male"
+                            required
+                          />
+                          <label for="male">Male</label>
+                        </div>
+                        <div class="customer-control custom-radio">
+                          <input
+                            type="radio"
+                            class="custom-control-input"
+                            id="female"
+                            name="gender"
+                            value="female"
+                            required
+                          />
+                          <label for="female">Female</label>
+                        </div>
+                        <div class="customer-control custom-radio">
+                          <input
+                            type="radio"
+                            class="custom-control-input"
+                            id="other"
+                            name="gender"
+                            value="other"
+                            required
+                          />
+                          <label for="other">Other</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="vaccination-brand-1"
+                      >Vaccination Brand (Dose 1):</label
+                    >
+                    <select
+                      id="vaccination-brand-1"
+                      class="form-control"
+                      name="vaccinationBrand1"
+                      required
+                    >
+                      <option value="">Select a brand</option>
+                      <option value="Pfizer BioNTech">Pfizer BioNTech</option>
+                      <option value="AstraZeneca">AstraZeneca</option>
+                      <option value="Coronavac">Coronavac</option>
+                      <option value="Sputnik V">Sputnik V</option>
+                      <option value="Janssen">Janssen</option>
+                      <option value="Covaxin">Covaxin</option>
+                      <option value="Moderna">Moderna</option>
+                      <option value="Sinopharm">Sinopharm</option>
+                      <option value="Covovax">Covovax</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="form-group">
+                    <label for="date-vaccination-1"
+                      >Date of Vaccination (Dose 1):</label
+                    >
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="date-vaccination-1"
+                      name="dateVaccination1"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label for="vaccination-site-1"
+                      >Vaccination (Dose 1) Site:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="vaccination-site-1"
+                      name="vaccinationSite1"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label>Did you already get your second vaccination?</label>
+                    <div class="form-control">
+                      <div id="second-vaccination">
+                        <input
+                          type="radio"
+                          id="yes"
+                          name="secondVaccination"
+                          value="yes"
+                          required
+                        />
+                        <label for="yes">Yes</label>
+
+                        <input
+                          type="radio"
+                          id="no"
+                          name="secondVaccination"
+                          value="no"
+                          required
+                        />
+                        <label for="no">No</label>
+                      </div>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button
+                    type="submit"
+                    name="submitBtn"
+                    class="btn btn-primary"
+                  >
+                    submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    (function () {
+      const form = document.forms.personInfo;
+      const inputNames = [
+        'firstName',
+        'middleName',
+        'lastName',
+        'birthday',
+        'email',
+        'region',
+        'province',
+        'barangay',
+        'street',
+        'gender',
+        'vaccinationBrand1',
+        'dateVaccination1',
+        'vaccinationSite1',
+        'secondVaccination',
+      ];
+      const registrationForm = document.querySelector('#registration-form');
+      const showResults = document.querySelector('#show-results');
+      const registerAgain = document.querySelector('#register-again');
+      const models = document.querySelectorAll('[data-model]');
+
+      registerAgain.addEventListener('click', e => {
+        registrationForm.style.display = 'block';
+        showResults.style.display = 'none';
+      });
+
+      form.submitBtn.addEventListener('click', e => {
+        e.preventDefault();
+        const errors = checkErrors();
+        if (errors) return;
+        fillModels();
+        registrationForm.style.display = 'none';
+        showResults.style.display = 'block';
+        form.reset();
+      });
+
+      function fillModels() {
+        models.forEach(model => {
+          const name = model.getAttribute('data-model');
+          const { value } = form[name];
+          model.innerHTML = !value ? '&nbsp;' : value;
+        });
+      }
+
+      function radioListErrorHandling(radios) {
+        const formGroup = radios[0].parentElement.closest('.form-group');
+        const label = formGroup.querySelector('label');
+        const formControl = formGroup.querySelector('.form-control');
+        const invalidFeedback = formGroup.querySelector('.invalid-feedback');
+        let hasRequired = false;
+        radios.forEach(radio => {
+          hasRequired = hasRequired || radio.hasAttribute('required');
+        });
+        formControl.classList.remove('is-invalid');
+        if (!hasRequired || radios.value)
+          return (invalidFeedback.style.display = 'none');
+        formControl.classList.add('is-invalid');
+        const errorMsg = `${label.innerText} is required`;
+        invalidFeedback.innerHTML = errorMsg;
+        invalidFeedback.style.display = 'block';
+        throw new Error(errorMsg);
+      }
+
+      function checkErrors() {
+        let errors = 0;
+        inputNames.forEach(name => {
+          try {
+            const input = form[name];
+            if (input instanceof RadioNodeList)
+              return radioListErrorHandling(input);
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const formGroup = input.parentElement.closest('.form-group');
+            const label = formGroup.querySelector('label');
+            const invalidFeedback =
+              formGroup.querySelector('.invalid-feedback');
+            input.classList.remove('is-invalid');
+            if (input.hasAttribute('required') && !input.value) {
+              input.classList.add('is-invalid');
+              const errorMsg = `${label.innerText} is required!`;
+              invalidFeedback.innerHTML = errorMsg;
+              throw new Error(errorMsg);
+            }
+            if (
+              input.getAttribute('type') === 'email' &&
+              !emailRegex.test(input.value)
+            ) {
+              input.classList.add('is-invalid');
+              const errorMsg = `${label.innerText} is invalid!`;
+              invalidFeedback.innerHTML = errorMsg;
+              throw new Error(errorMsg);
+            }
+            invalidFeedback.innerText = '';
+          } catch (e) {
+            errors++;
+          }
+        });
+        return errors;
+      }
+      checkErrors();
+    })();
+  </script>
+</html>

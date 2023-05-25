@@ -1,0 +1,30 @@
+.aqua-box-container {
+  display: flex;
+  justify-content: center;
+}
+.bisque-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blueviolet-box-container {
+  display: flex;
+  justify-content: end;
+}
+.advance-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.advance-container div:nth-child(1) {
+  display: flex;
+  justify-self: flex-start;
+  justify-content: space-between;
+}
+
+.advance-container div:nth-child(2) {
+  display: flex;
+  justify-self: flex-end;
+  justify-content: space-between;
+}

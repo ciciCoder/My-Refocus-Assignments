@@ -1,0 +1,29 @@
+@mixin triangle($side, $color, $length) {
+  $sides: (
+    top: bottom,
+    bottom: top,
+    left: right,
+    right: left,
+  );
+
+  width: 0;
+  height: 0;
+
+  @each $key, $value in $sides {
+    @if ($key != map-get($sides, $side)) {
+      $border-color: if($key == $side, $color, transparent);
+      border-#{$key}: $length solid $border-color;
+    }
+  }
+}
+
+@mixin ellipse($width, $height) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+}
+
+@mixin rectangle($width, $height) {
+  width: $width;
+  height: $height;
+}

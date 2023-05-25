@@ -1,0 +1,65 @@
+@use 'mixins';
+@use 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: variables.$container-padding;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(3, 1fr);
+  gap: variables.$container-gap;
+  place-items: center;
+}
+
+.triangle-left {
+  @include mixins.triangle(right, variables.$primary-color, 100px);
+}
+
+.triangle-up {
+  @include mixins.triangle(bottom, variables.$warning-color, 100px);
+}
+
+.triangle-down {
+  @include mixins.triangle(top, variables.$error-color, 100px);
+}
+
+.triangle-right {
+  @include mixins.triangle(left, variables.$success-color, 100px);
+}
+
+.ellipse-horizontal {
+  @include mixins.ellipse(180px, 90px);
+}
+
+.ellipse-vertical {
+  @include mixins.ellipse(90px, 180px);
+}
+
+.rectangle-horizontal {
+  @include mixins.rectangle(120px, 80px);
+}
+
+.rectangle-vertical {
+  @include mixins.rectangle(80px, 120px);
+}
+
+.orange {
+  background-color: variables.$warning-color;
+}
+
+.red {
+  background-color: variables.$error-color;
+}
+
+.green {
+  background-color: variables.$success-color;
+}
+
+.blue {
+  background-color: variables.$primary-color;
+}

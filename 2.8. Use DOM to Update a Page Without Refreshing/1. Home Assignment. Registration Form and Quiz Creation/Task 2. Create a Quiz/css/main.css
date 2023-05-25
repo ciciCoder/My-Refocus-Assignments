@@ -1,0 +1,39 @@
+:root {
+  --bs-primary: #2744FF;
+}
+
+.container-background {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: url("https://images.typeform.com/images/wwbY9VdsEREa/background/large");
+  background-size: 100% 100%;
+}
+
+.btn-primary {
+  background: var(--bs-primary);
+}
+
+.bg-primary {
+  background: var(--bs-primary);
+}
+
+.caption {
+  font-size: 20px;
+  color: #ADB0B9;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  color: #192140;
+}
+
+#quiz-carousel {
+  width: 720px;
+}
+#quiz-carousel .carousel-item.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+}/*# sourceMappingURL=main.css.map */
