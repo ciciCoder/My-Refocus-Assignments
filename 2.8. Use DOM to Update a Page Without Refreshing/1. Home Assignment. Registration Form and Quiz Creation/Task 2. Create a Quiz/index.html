@@ -1,400 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/main.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/utils.js"></script>
-  </head>
-  <body>
-    <div
-      class="container container-background d-flex justify-content-center align-items-center"
-    >
-      <div class="container d-flex justify-content-center">
-        <div
-          id="quiz-carousel"
-          class="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="false"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="container">
-                <p class="title">
-                  This quiz is here to help you understand the material, not
-                  remember it by heart. Besides, it's an opportunity to
-                  practice.
-                </p>
-                <p class="caption mt-4">
-                  This quiz is here to help you understand the material, not
-                  remember it by heart. Besides, it's an opportunity to
-                  practice.
-                </p>
-                <div class="mt-4 d-flex align-items-center">
-                  <button
-                    class="btn btn-primary"
-                    style="font-size: 24px"
-                    data-bs-target="#quiz-carousel"
-                    data-bs-slide="next"
-                  >
-                    <b>Start</b>
-                  </button>
-                  <span class="mx-2">Press<strong>Enter ↵</strong></span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="./js/utils.js"></script>
+</head>
+
+<body>
+  <div class="container container-background d-flex justify-content-center align-items-center">
+    <div class="container d-flex justify-content-center">
+      <div id="quiz-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <p class="title">
+                This quiz is here to help you understand the material, not
+                remember it by heart. Besides, it's an opportunity to
+                practice.
+              </p>
+              <p class="caption mt-4">
+                This quiz is here to help you understand the material, not
+                remember it by heart. Besides, it's an opportunity to
+                practice.
+              </p>
+              <div class="mt-4 d-flex align-items-center">
+                <button class="btn btn-primary" style="font-size: 24px" data-bs-target="#quiz-carousel"
+                  data-bs-slide="next">
+                  <b>Start</b>
+                </button>
+                <span class="mx-2">Press<strong>Enter ↵</strong></span>
+              </div>
+              <div class="mt-2">
+                <span>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" data-qa="animated-clock"
+                    class="ClockSVG-sc-__sc-1j3qdaw-0 iEisIU">
+                    <circle cx="6" cy="6" fill="#192140" r="6"></circle>
+                    <line x1="6" y1="6" x2="6" y2="3" stroke="#FCFCFC" stroke-width="1.2" stroke-linecap="round"></line>
+                    <line x1="6" y1="6" x2="6" y2="3" stroke="#FCFCFC" stroke-width="1.2" stroke-linecap="round"
+                      id="clock-hour-hand"></line>
+                  </svg>
+                </span>
+                <span>Takes 45 sec</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <h3>1. What is the capital of the Philippines?</h3>
+              <input type="text" class="form-control mt-4" data-model="capital" />
+              <button class="btn btn-primary mt-4 text-white" id="question-1-btn">
+                <b>OK</b>
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <p class="title">
+                The right answer is:
+                <br />
+                <span class="text-decoration-underline">Manila</span>
+              </p>
+              <p class="caption">
+                "Manila" is the capital city of the Philippines, known for its
+                bustling urban life, historical landmarks, and cultural
+                richness.
+              </p>
+              <button class="btn btn-primary mt-4 text-white" id="question-1-btn" data-bs-slide="next"
+                data-bs-target="#quiz-carousel">
+                <b>Continue</b>
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <h3>
+                2. What is the value of x in this equation: x = 3 + 2×5?
+              </h3>
+              <div data-radio-group="xValue" data-model="xVal">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="xValue" id="x25" value="25" />
+                  <label class="form-check-label" for="x25"> x = 25 </label>
                 </div>
-                <div class="mt-2">
-                  <span>
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      data-qa="animated-clock"
-                      class="ClockSVG-sc-__sc-1j3qdaw-0 iEisIU"
-                    >
-                      <circle cx="6" cy="6" fill="#192140" r="6"></circle>
-                      <line
-                        x1="6"
-                        y1="6"
-                        x2="6"
-                        y2="3"
-                        stroke="#FCFCFC"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                      ></line>
-                      <line
-                        x1="6"
-                        y1="6"
-                        x2="6"
-                        y2="3"
-                        stroke="#FCFCFC"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        id="clock-hour-hand"
-                      ></line>
-                    </svg>
-                  </span>
-                  <span>Takes 45 sec</span>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="xValue" id="x13" value="13" />
+                  <label class="form-check-label" for="x13"> x = 13 </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="xValue" id="x18" value="18" />
+                  <label class="form-check-label" for="x18"> x = 18 </label>
                 </div>
               </div>
+              <button class="btn btn-primary mt-4 text-white" id="question-2-btn">
+                <b>OK</b>
+              </button>
             </div>
-            <div class="carousel-item">
-              <div class="container">
-                <h3>1. What is the capital of the Philippines?</h3>
-                <input
-                  type="text"
-                  class="form-control mt-4"
-                  data-model="capital"
-                />
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="question-1-btn"
-                >
-                  <b>OK</b>
-                </button>
-              </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <p class="title">
+                The right answer is:
+                <br />
+                <span class="text-decoration-underline">13</span>
+              </p>
+              <p class="caption">
+                Multiplying 2 by 5 gives us 10, and adding 3 to it results in
+                a final value of 13. Therefore, the expression can be
+                simplified to "x = 13."
+              </p>
+              <button class="btn btn-primary mt-4 text-white" id="question-1-btn" data-bs-slide="next"
+                data-bs-target="#quiz-carousel">
+                <b>Continue</b>
+              </button>
             </div>
-            <div class="carousel-item">
-              <div class="container">
-                <p class="title">
-                  The right answer is:
-                  <br />
-                  <span class="text-decoration-underline">Manila</span>
-                </p>
-                <p class="caption">
-                  "Manila" is the capital city of the Philippines, known for its
-                  bustling urban life, historical landmarks, and cultural
-                  richness.
-                </p>
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="question-1-btn"
-                  data-bs-slide="next"
-                  data-bs-target="#quiz-carousel"
-                >
-                  <b>Continue</b>
-                </button>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <h3>
-                  2. What is the value of x in this equation: x = 3 + 2×5?
-                </h3>
-                <div data-radio-group="xValue" data-model="xVal">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="xValue"
-                      id="x25"
-                      value="25"
-                    />
-                    <label class="form-check-label" for="x25"> x = 25 </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="xValue"
-                      id="x13"
-                      value="13"
-                    />
-                    <label class="form-check-label" for="x13"> x = 13 </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="xValue"
-                      id="x18"
-                      value="18"
-                    />
-                    <label class="form-check-label" for="x18"> x = 18 </label>
-                  </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <h3>
+                3. Which of the following birds can fly? Choose 3 correct
+                answers
+              </h3>
+              <div data-checkbox-group data-group-size="3" data-model="animal">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="parrotCheckbox" value="Parrot" />
+                  <label class="form-check-label" for="parrotCheckbox">Parrot</label>
                 </div>
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="question-2-btn"
-                >
-                  <b>OK</b>
-                </button>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <p class="title">
-                  The right answer is:
-                  <br />
-                  <span class="text-decoration-underline">13</span>
-                </p>
-                <p class="caption">
-                  Multiplying 2 by 5 gives us 10, and adding 3 to it results in
-                  a final value of 13. Therefore, the expression can be
-                  simplified to "x = 13."
-                </p>
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="question-1-btn"
-                  data-bs-slide="next"
-                  data-bs-target="#quiz-carousel"
-                >
-                  <b>Continue</b>
-                </button>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <h3>
-                  3. Which of the following birds can fly? Choose 3 correct
-                  answers
-                </h3>
-                <div
-                  data-checkbox-group
-                  data-group-size="3"
-                  data-model="animal"
-                >
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="parrotCheckbox"
-                      value="Parrot"
-                    />
-                    <label class="form-check-label" for="parrotCheckbox"
-                      >Parrot</label
-                    >
-                  </div>
 
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="eagleCheckbox"
-                      value="Eagle"
-                    />
-                    <label class="form-check-label" for="eagleCheckbox"
-                      >Eagle</label
-                    >
-                  </div>
-
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="penguinCheckbox"
-                      value="Penguin"
-                    />
-                    <label class="form-check-label" for="penguinCheckbox"
-                      >Penguin</label
-                    >
-                  </div>
-
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="crowCheckbox"
-                      value="Crow"
-                    />
-                    <label class="form-check-label" for="crowCheckbox"
-                      >Crow</label
-                    >
-                  </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="eagleCheckbox" value="Eagle" />
+                  <label class="form-check-label" for="eagleCheckbox">Eagle</label>
                 </div>
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="question-3-btn"
-                >
-                  <b>OK</b>
-                </button>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="penguinCheckbox" value="Penguin" />
+                  <label class="form-check-label" for="penguinCheckbox">Penguin</label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="crowCheckbox" value="Crow" />
+                  <label class="form-check-label" for="crowCheckbox">Crow</label>
+                </div>
               </div>
+              <button class="btn btn-primary mt-4 text-white" id="question-3-btn">
+                <b>OK</b>
+              </button>
             </div>
-            <div class="carousel-item">
-              <div class="container">
-                <p class="title">
-                  The right answers are:
-                  <br />
-                  <span class="text-decoration-underline"
-                    >Parrot, Crow and Eagle</span
-                  >
-                </p>
-                <p class="caption">
-                  Out of the four mentioned birds, the penguin is the one that
-                  cannot fly. While parrots, eagles, and crows are known for
-                  their ability to fly, penguins have wings adapted for swimming
-                  rather than flying. Penguins are excellent swimmers, using
-                  their wings as flippers to navigate through water, but they
-                  are not capable of sustained flight in the air.
-                </p>
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="question-1-btn"
-                  data-bs-slide="next"
-                  data-bs-target="#quiz-carousel"
-                >
-                  <b>Continue</b>
-                </button>
-              </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <p class="title">
+                The right answers are:
+                <br />
+                <span class="text-decoration-underline">Parrot, Crow and Eagle</span>
+              </p>
+              <p class="caption">
+                Out of the four mentioned birds, the penguin is the one that
+                cannot fly. While parrots, eagles, and crows are known for
+                their ability to fly, penguins have wings adapted for swimming
+                rather than flying. Penguins are excellent swimmers, using
+                their wings as flippers to navigate through water, but they
+                are not capable of sustained flight in the air.
+              </p>
+              <button class="btn btn-primary mt-4 text-white" id="question-1-btn" data-bs-slide="next"
+                data-bs-target="#quiz-carousel">
+                <b>Continue</b>
+              </button>
             </div>
-            <div class="carousel-item">
-              <div class="container">
-                <p class="title">
-                  Your score: <span data-model="score"></span> out of 3
-                  <br />
-                </p>
-                <p class="caption">
-                  Kudos! That's a good score. Let's move further to learn even
-                  more 🚀
-                </p>
-                <button
-                  class="btn btn-primary mt-4 text-white"
-                  id="retry-btn"
-                  data-bs-slide="next"
-                  data-bs-target="#quiz-carousel"
-                >
-                  <b>retry</b>
-                </button>
-              </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <p class="title">
+                Your score: <span data-model="score"></span> out of 3
+                <br />
+              </p>
+              <p class="caption">
+                Kudos! That's a good score. Let's move further to learn even
+                more 🚀
+              </p>
+              <button class="btn btn-primary mt-4 text-white" id="retry-btn" data-bs-slide="next"
+                data-bs-target="#quiz-carousel">
+                <b>retry</b>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
-  <script>
-    ;(function () {
-      /**
-       * @typedef {Object} Ref
-       * @property {unknown} value
-       *
-       */
+  </div>
+</body>
+<script>
+  ; (function () {
+    /**
+     * @typedef {Object} Ref
+     * @property {unknown} value
+     *
+     */
+    /**@type {Element} */
+    const quizCarouselEl = document.querySelector('#quiz-carousel')
+    const quizCarousel = new bootstrap.Carousel(quizCarouselEl)
+    /**@type {Ref} */
+    const capital = ref('capital', null)
+    /**@type {Ref} */
+    const xVal = ref('xVal', null)
+    /**@type {Ref} */
+    const animal = ref('animal', [])
+    const score = ref('score', 0)
+    /**
+     * Description
+     * @returns {number}
+     */
+    function getActiveCarousel() {
+      const activeItem = quizCarouselEl.querySelector('.carousel-item.active')
+      const activeIndex = Array.from(
+        quizCarouselEl.querySelectorAll('.carousel-item')
+      ).indexOf(activeItem)
+      return activeIndex
+    }
+
+    function nextOnEnter() {
+      const index = getActiveCarousel()
+      if (index) return
+      quizCarousel.next()
+    }
+
+    document.querySelector('#question-1-btn').addEventListener('click', e => {
+      if (!capital.value) return
+      capital.value = capital.value.trim()
+      const regex = /manila/i
+      if (regex.test(capital.value)) score.value++
+      quizCarousel.next()
+    })
+
+    document.querySelector('#question-2-btn').addEventListener('click', e => {
+      if (!xVal.value) return
+      if (Number(xVal.value) === 13) score.value++
+      quizCarousel.next()
+    })
+
+    document.querySelector('#question-3-btn').addEventListener('click', e => {
       /**@type {Element} */
-      const quizCarouselEl = document.querySelector('#quiz-carousel')
-      const quizCarousel = new bootstrap.Carousel(quizCarouselEl)
-      /**@type {Ref} */
-      const capital = ref('capital', null)
-      /**@type {Ref} */
-      const xVal = ref('xVal', null)
-      /**@type {Ref} */
-      const animal = ref('animal', [])
-      const score = ref('score', 0)
-      /**
-       * Description
-       * @returns {number}
-       */
-      function getActiveCarousel() {
-        const activeItem = quizCarouselEl.querySelector('.carousel-item.active')
-        const activeIndex = Array.from(
-          quizCarouselEl.querySelectorAll('.carousel-item')
-        ).indexOf(activeItem)
-        return activeIndex
+      const container = e.target.closest('.container')
+      /** @type {Element}*/
+      const checkboxGroup = container.querySelector('[data-checkbox-group]')
+      const size = Number(checkboxGroup.getAttribute('data-group-size'))
+      const { length } = animal.value
+      if (!length || length !== size) return
+      const correctAnswers = ['Crow', 'Eagle', 'Parrot']
+      const answers = animal.value.sort()
+      const correct = correctAnswers.every(
+        (answer, index) => answer === answers[index]
+      )
+      if (correct) score.value++
+      quizCarousel.next()
+    })
+
+    document.querySelector('#retry-btn').addEventListener('click', () => {
+      capital.value = null
+      xVal.value = null
+      animal.value = []
+      score.value = 0
+    })
+
+    window.addEventListener('keypress', function (event) {
+      if (event.keyCode === 13) {
+        nextOnEnter()
+        return
       }
+    })
+  })()
+</script>
 
-      function nextOnEnter() {
-        const index = getActiveCarousel()
-        if (index) return
-        quizCarousel.next()
-      }
-
-      document.querySelector('#question-1-btn').addEventListener('click', e => {
-        if (!capital.value) return
-        capital.value = capital.value.trim()
-        const regex = /manila/i
-        if (regex.test(capital.value)) score.value++
-        quizCarousel.next()
-      })
-
-      document.querySelector('#question-2-btn').addEventListener('click', e => {
-        if (!xVal.value) return
-        if (Number(xVal.value) === 13) score.value++
-        quizCarousel.next()
-      })
-
-      document.querySelector('#question-3-btn').addEventListener('click', e => {
-        /**@type {Element} */
-        const container = e.target.closest('.container')
-        /** @type {Element}*/
-        const checkboxGroup = container.querySelector('[data-checkbox-group]')
-        const size = Number(checkboxGroup.getAttribute('data-group-size'))
-        const { length } = animal.value
-        if (!length || length !== size) return
-        const correctAnswers = ['Crow', 'Eagle', 'Parrot']
-        const answers = animal.value.sort()
-        const correct = correctAnswers.every(
-          (answer, index) => answer === answers[index]
-        )
-        if (correct) score.value++
-        quizCarousel.next()
-      })
-
-      document.querySelector('#retry-btn').addEventListener('click', () => {
-        capital.value = null
-        xVal.value = null
-        animal.value = []
-        score.value = 0
-      })
-
-      window.addEventListener('keypress', function (event) {
-        if (event.keyCode === 13) {
-          nextOnEnter()
-          return
-        }
-      })
-    })()
-  </script>
 </html>
