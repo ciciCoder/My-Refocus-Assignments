@@ -1,0 +1,24 @@
+.Input {
+  display: flex;
+  align-items: start;
+  box-sizing: border-box;
+  width: 100%;
+  flex-direction: column;
+  padding: 10px;
+  gap: 2px;
+  background: #dfdfdf;
+}
+
+.Input input {
+  display: block;
+  border: none;
+  color: #757575;
+  width: 100%;
+  background: transparent;
+  font-size: medium;
+}
+
+.Input input:focus {
+  outline: none;
+  border: none !important;
+}
