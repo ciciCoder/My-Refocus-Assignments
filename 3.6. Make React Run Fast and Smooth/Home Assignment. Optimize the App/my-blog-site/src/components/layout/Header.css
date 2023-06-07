@@ -1,0 +1,18 @@
+@tailwind utilities;
+
+@layer utilities {
+  .Header nav a {
+    transition-duration: 0.5s;
+  }
+  .Header nav a::after {
+    content: '';
+    @apply w-0 absolute bottom-0 border border-amber-900 left-0;
+  }
+  .Header nav .active {
+    @apply text-amber-900 font-semibold relative;
+  }
+  .Header nav .active::after {
+    transition-duration: 0.5s;
+    @apply w-full mt-4 absolute bottom-0 border border-amber-900 left-0;
+  }
+}
