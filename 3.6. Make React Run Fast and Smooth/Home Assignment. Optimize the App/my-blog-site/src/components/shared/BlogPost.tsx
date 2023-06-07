@@ -3,7 +3,7 @@ import NoContent from './NoContent';
 
 interface BlogPostProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export default function BlogPost(props: BlogPostProps) {
+const BlogPost = React.memo((props: BlogPostProps) => {
   const { children, ...attrs } = props;
   return (
     <>
@@ -21,4 +21,6 @@ export default function BlogPost(props: BlogPostProps) {
       })()}
     </>
   );
-}
+});
+
+export default BlogPost;

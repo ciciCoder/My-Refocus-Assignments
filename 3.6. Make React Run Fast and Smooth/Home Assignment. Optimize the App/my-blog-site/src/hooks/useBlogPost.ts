@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
+import { getUniqueString } from '../utils';
 
 export interface IBlogPost {
+  id: string;
   title: string;
   author: string;
   content: string;
@@ -8,7 +10,6 @@ export interface IBlogPost {
 }
 
 type State = IBlogPost[];
-
 const blogPostApi: IBlogPost[] = [
   {
     title: 'Introduction to JavaScript',
@@ -79,7 +80,7 @@ const blogPostApi: IBlogPost[] = [
     content:
       'Discover the importance of web accessibility and how to make your websites more inclusive.',
   },
-];
+].map(post => ({ ...post, id: getUniqueString() }));
 
 const initialState: State = [];
 
@@ -90,10 +91,13 @@ const ACTIONS = Object.freeze({
   DELETE: 'delete',
 });
 
+export type IBlogPostId = IBlogPost['id'];
+export type IBlogPostUserInputs = Omit<IBlogPost, 'id'>;
+
 type Payloads = {
-  store: IBlogPost;
-  update: { index: number; values: IBlogPost };
-  delete: number;
+  store: Omit<IBlogPost, 'id'>;
+  update: [IBlogPostId, IBlogPostUserInputs];
+  delete: IBlogPostId;
 };
 
 type ActionTypes = typeof ACTIONS;
@@ -110,26 +114,22 @@ function reducer(state: State, action: Action) {
       return [...blogPostApi];
     }
     case ACTIONS.STORE: {
-      const blogpost = action.payload as Payloads['store'];
-      return [...state, blogpost];
+      const blogpost = action.payload;
+      return [...state, { ...blogpost, id: getUniqueString() }];
     }
     case ACTIONS.UPDATE: {
-      const { index, values } = action.payload as Payloads['update'];
-      if (index == null || values == null)
+      const [id, values] = action.payload;
+      if (id == null || values == null)
         throw new Error(
-          'payload: attributes index and values is required on update action'
+          'payload: attributes id and values is required on update action'
         );
-      const stateClone = [...state];
-      stateClone[index] = values;
-      return stateClone;
+      return state.map(item => (item.id === id ? { ...values, id } : item));
     }
     case ACTIONS.DELETE: {
-      const index = action.payload as Payloads['delete'];
-      if (typeof index !== 'number')
-        throw new Error('payload: must be a number on delete action');
-      const stateClone = [...state];
-      stateClone.splice(index, 1);
-      return [...stateClone];
+      const id = action.payload as Payloads['delete'];
+      if (typeof id !== 'string')
+        throw new Error('payload: must be a string on delete action');
+      return state.filter(item => item.id !== id);
     }
     default:
       return [...state];

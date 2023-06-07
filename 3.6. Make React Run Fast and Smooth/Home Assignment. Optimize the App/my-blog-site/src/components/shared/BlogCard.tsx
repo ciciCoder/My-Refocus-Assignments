@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 
 interface BlogCardProps extends React.HTMLAttributes<HTMLDivElement> {
   author?: string;

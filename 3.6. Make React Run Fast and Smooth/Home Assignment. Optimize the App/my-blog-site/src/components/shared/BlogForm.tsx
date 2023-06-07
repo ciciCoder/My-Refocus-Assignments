@@ -1,23 +1,21 @@
 import React, { useEffect, useId, useRef } from 'react';
 import Input from '../common/Input';
 import TextArea from '../common/TextArea';
-import { IBlogPost } from '../../hooks/useBlogPost';
-
-export type IBlogPostEditProps = IBlogPost & { index: number };
+import { IBlogPost, IBlogPostUserInputs } from '../../hooks/useBlogPost';
 
 type BlogFormProps = Omit<JSX.IntrinsicElements['form'], 'onSubmit'> & {
-  editProps?: IBlogPostEditProps;
-  onSubmit(inputs: IBlogPost): void;
-  onUpdate(index: number, inputs: IBlogPost): void;
-  onCancel(): void;
+  editProps?: IBlogPost;
+  onSubmit?: (inputs: IBlogPostUserInputs) => void;
+  onUpdate?: (id: IBlogPost['id'], inputs: IBlogPostUserInputs) => void;
+  onCancel?: () => void;
 };
 
-export default function BlogForm(props: BlogFormProps) {
+const BlogForm = React.memo((props: BlogFormProps) => {
   const { onSubmit, onUpdate, onCancel, editProps, ...attrs } = props;
   const id = useId();
   const form = useRef<HTMLFormElement>(null);
 
-  const setInputValues = (params: IBlogPost) => {
+  const setInputValues = (params: IBlogPostUserInputs) => {
     if (!form.current) throw new Error('form not found');
     const { bookTitle, author, content, date } = form.current;
     bookTitle.value = params.title;
@@ -26,9 +24,10 @@ export default function BlogForm(props: BlogFormProps) {
     date.value = params.date;
   };
 
-  const getInputValues = (): IBlogPost => {
+  const getInputValues = (): IBlogPostUserInputs => {
     if (!form.current) throw new Error('form not found');
     const { bookTitle, author, content, date } = form.current;
+    if (!editProps) throw new Error('no data found');
     return {
       title: bookTitle.value,
       author: author.value,
@@ -52,7 +51,7 @@ export default function BlogForm(props: BlogFormProps) {
 
     (() => {
       if (!editProps) return onSubmit?.(inputs);
-      onUpdate?.(editProps.index, inputs);
+      onUpdate?.(editProps.id, inputs);
     })();
 
     setInputValues({
@@ -62,7 +61,7 @@ export default function BlogForm(props: BlogFormProps) {
       content: '',
     });
   };
-
+  console.log('blog form: i am rerendering');
   return (
     <form ref={form} {...attrs} onSubmit={submitHandler}>
       <div className="card flex flex-col gap-3 p-3 max-w-md mx-auto mb-3 shadow-md">
@@ -94,4 +93,6 @@ export default function BlogForm(props: BlogFormProps) {
       </div>
     </form>
   );
-}
+});
+
+export default BlogForm;

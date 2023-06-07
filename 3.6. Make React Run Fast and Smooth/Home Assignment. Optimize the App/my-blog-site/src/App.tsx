@@ -6,84 +6,91 @@ import Main from './components/layout/Main';
 import BlogPost from './components/shared/BlogPost';
 import BlogCard from './components/shared/BlogCard';
 import BlogForm from './components/shared/BlogForm';
-import useBlogPost, { IBlogPost } from './hooks/useBlogPost';
-import { useCallback, useEffect, useState } from 'react';
+import useBlogPost, {
+  IBlogPost,
+  IBlogPostUserInputs,
+} from './hooks/useBlogPost';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai';
 import Modal from './components/shared/Modal';
 
 function App() {
   const [blogPosts, blogPostDispatch] = useBlogPost();
-  const [editBlogPostIndex, setEditBlogPostIndex] = useState<number>(-1);
-  const [showBlogPostIndex, setShowBlogPostIndex] = useState<number>(-1);
+  const [editBlogPostId, setEditBlogPostId] = useState<string>('');
+  const [showBlogPostId, setShowBlogPostId] = useState<string>('');
 
   useEffect(() => {
     blogPostDispatch({ type: 'fetch' });
   }, [blogPostDispatch]);
 
-  const storeBlog = (inputs: IBlogPost) => {
-    blogPostDispatch({ type: 'store', payload: inputs });
-  };
-
-  const updateBlog = (index: number, values: IBlogPost) => {
-    blogPostDispatch({ type: 'update', payload: { index, values } });
-    setEditBlogPostIndex(-1);
-    setEditBlogPostIndex(-1);
-  };
-
-  const deleteBlog = (index: number) => {
-    console.log('delete');
-    return () => {
-      blogPostDispatch({ type: 'delete', payload: index });
-      setShowBlogPostIndex(-1);
-      setEditBlogPostIndex(-1);
-    };
-  };
-
-  const editHandler = useCallback(
-    (index: number) => {
-      console.log('edit');
-      return () => {
-        setEditBlogPostIndex(index);
-        setShowBlogPostIndex(-1);
-      };
+  const storeBlog = useCallback(
+    (inputs: IBlogPostUserInputs) => {
+      blogPostDispatch({ type: 'store', payload: inputs });
     },
-    [setEditBlogPostIndex, setShowBlogPostIndex]
+    [blogPostDispatch]
   );
-  const cancelUpdate = () => {
-    setEditBlogPostIndex(-1);
+
+  const getBlogPost = (id: IBlogPost['id']) =>
+    blogPosts.find(item => item.id === id);
+
+  const updateBlog = useCallback(
+    (id: IBlogPost['id'], values: IBlogPostUserInputs) => {
+      blogPostDispatch({ type: 'update', payload: [id, values] });
+      setEditBlogPostId('');
+      setEditBlogPostId('');
+    },
+    [blogPostDispatch]
+  );
+
+  const deleteBlog = useCallback(
+    (id: string) => () => {
+      blogPostDispatch({ type: 'delete', payload: id });
+      setShowBlogPostId('');
+      setEditBlogPostId('');
+    },
+    [blogPostDispatch]
+  );
+
+  const editHandler = (id: IBlogPost['id']) => () => {
+    setEditBlogPostId(id);
+    setShowBlogPostId('');
   };
+
+  const cancelUpdate = useCallback(() => {
+    setEditBlogPostId('');
+  }, []);
 
   const blogPostShowHandler =
-    (index: number): React.MouseEventHandler =>
+    (id: IBlogPost['id']): React.MouseEventHandler =>
     e => {
       if (!(e.target instanceof HTMLDivElement)) return;
-      setShowBlogPostIndex(index);
+      setShowBlogPostId(id);
     };
 
   const blogPostShowOnCloseHandler = () => {
-    setShowBlogPostIndex(-1);
+    setShowBlogPostId('');
   };
 
   return (
     <div className="App">
       <Modal
-        show={showBlogPostIndex > -1}
+        show={!!showBlogPostId}
         onClose={blogPostShowOnCloseHandler}
         className="bg-transparent max-w-md"
       >
         <BlogCard
-          {...blogPosts[showBlogPostIndex]}
+          {...getBlogPost(showBlogPostId)}
           actions={
             <div className="w-full grid grid-cols-2 gap-3">
               <button
-                onClick={editHandler(showBlogPostIndex)}
+                onClick={editHandler(showBlogPostId)}
                 className="btn btn-warning flex items-center px-0 justify-center"
               >
                 <AiFillEdit />
                 Edit
               </button>
               <button
-                onClick={deleteBlog(showBlogPostIndex)}
+                onClick={deleteBlog(showBlogPostId)}
                 className="btn btn-danger flex items-center px-0 justify-center"
               >
                 <AiOutlineDelete />
@@ -96,42 +103,35 @@ function App() {
       <Header />
       <Main>
         <BlogForm
-          editProps={
-            editBlogPostIndex > -1
-              ? {
-                  ...blogPosts[editBlogPostIndex],
-                  index: editBlogPostIndex,
-                }
-              : undefined
-          }
+          editProps={getBlogPost(editBlogPostId)}
           onUpdate={updateBlog}
           onSubmit={storeBlog}
           onCancel={cancelUpdate}
         />
         <div className="divider"></div>
         <BlogPost>
-          {blogPosts.map((blogpost, idx) => (
+          {blogPosts.map(blogpost => (
             <BlogCard
-              key={idx}
+              key={blogpost.id}
               {...blogpost}
               className="cursor-pointer"
-              onClick={blogPostShowHandler(idx)}
+              onClick={blogPostShowHandler(blogpost.id)}
               actions={
                 <div className="w-full grid grid-cols-2 gap-3">
-                  {/* <button
-                    onClick={editHandler(idx)}
+                  <button
+                    onClick={editHandler(blogpost.id)}
                     className="btn btn-warning flex items-center px-0 justify-center"
                   >
                     <AiFillEdit />
                     Edit
                   </button>
                   <button
-                    onClick={deleteBlog(idx)}
+                    onClick={deleteBlog(blogpost.id)}
                     className="btn btn-danger flex items-center px-0 justify-center"
                   >
                     <AiOutlineDelete />
                     Delete
-                  </button> */}
+                  </button>
                 </div>
               }
             />
