@@ -3,21 +3,33 @@ import 'animate.css';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import Main from './components/layout/Main';
-import BlogPost from './components/shared/BlogPost';
+import BlogPost, {
+  BlogPostAction,
+  BlogPostModal,
+} from './components/shared/BlogPost';
 import BlogCard from './components/shared/BlogCard';
 import BlogForm from './components/shared/BlogForm';
 import useBlogPost, {
   IBlogPost,
   IBlogPostUserInputs,
 } from './hooks/useBlogPost';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai';
+import React, { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import Modal from './components/shared/Modal';
+import SearchInput from './components/common/SearchInput';
 
 function App() {
   const [blogPosts, blogPostDispatch] = useBlogPost();
-  const [editBlogPostId, setEditBlogPostId] = useState<string>('');
-  const [showBlogPostId, setShowBlogPostId] = useState<string>('');
+  const [editBlogPostId, setEditBlogPostId] = useState('');
+  const [showBlogPostId, setShowBlogPostId] = useState('');
+  const [searchBlog, setSearchBlog] = useState('');
+  const id = useId();
+
+  const blogPostFilteredList = useMemo(() => {
+    const searchRegex = new RegExp(searchBlog, 'i');
+    return blogPosts.filter(
+      blog => searchRegex.test(blog.title) || searchRegex.test(blog.author)
+    );
+  }, [blogPosts, searchBlog]);
 
   useEffect(() => {
     blogPostDispatch({ type: 'fetch' });
@@ -30,8 +42,10 @@ function App() {
     [blogPostDispatch]
   );
 
-  const getBlogPost = (id: IBlogPost['id']) =>
-    blogPosts.find(item => item.id === id);
+  const getBlogPost = useCallback(
+    (id: IBlogPost['id']) => blogPosts.find(item => item.id === id),
+    [blogPosts]
+  );
 
   const updateBlog = useCallback(
     (id: IBlogPost['id'], values: IBlogPostUserInputs) => {
@@ -43,7 +57,7 @@ function App() {
   );
 
   const deleteBlog = useCallback(
-    (id: string) => () => {
+    (id: string) => {
       blogPostDispatch({ type: 'delete', payload: id });
       setShowBlogPostId('');
       setEditBlogPostId('');
@@ -51,92 +65,57 @@ function App() {
     [blogPostDispatch]
   );
 
-  const editHandler = (id: IBlogPost['id']) => () => {
+  const editBlog = useCallback((id: IBlogPost['id']) => {
     setEditBlogPostId(id);
     setShowBlogPostId('');
-  };
+  }, []);
 
   const cancelUpdate = useCallback(() => {
     setEditBlogPostId('');
   }, []);
 
-  const blogPostShowHandler =
-    (id: IBlogPost['id']): React.MouseEventHandler =>
-    e => {
-      if (!(e.target instanceof HTMLDivElement)) return;
-      setShowBlogPostId(id);
-    };
+  const showBlog = useCallback((id: IBlogPost['id']) => {
+    setShowBlogPostId(id);
+  }, []);
 
-  const blogPostShowOnCloseHandler = () => {
+  const closeModal = useCallback(() => {
     setShowBlogPostId('');
-  };
+  }, []);
+
+  const searchHandler: React.ChangeEventHandler<HTMLInputElement> = useCallback(
+    e => {
+      setSearchBlog(e.target.value);
+    },
+    []
+  );
 
   return (
     <div className="App">
-      <Modal
-        show={!!showBlogPostId}
-        onClose={blogPostShowOnCloseHandler}
-        className="bg-transparent max-w-md"
-      >
-        <BlogCard
-          {...getBlogPost(showBlogPostId)}
-          actions={
-            <div className="w-full grid grid-cols-2 gap-3">
-              <button
-                onClick={editHandler(showBlogPostId)}
-                className="btn btn-warning flex items-center px-0 justify-center"
-              >
-                <AiFillEdit />
-                Edit
-              </button>
-              <button
-                onClick={deleteBlog(showBlogPostId)}
-                className="btn btn-danger flex items-center px-0 justify-center"
-              >
-                <AiOutlineDelete />
-                Delete
-              </button>
-            </div>
-          }
-        />
-      </Modal>
       <Header />
       <Main>
+        <BlogPostModal
+          blogpost={getBlogPost(showBlogPostId)}
+          onClose={closeModal}
+          onEdit={editBlog}
+          onDelete={deleteBlog}
+        />
         <BlogForm
           editProps={getBlogPost(editBlogPostId)}
           onUpdate={updateBlog}
           onSubmit={storeBlog}
           onCancel={cancelUpdate}
         />
+
         <div className="divider"></div>
-        <BlogPost>
-          {blogPosts.map(blogpost => (
-            <BlogCard
-              key={blogpost.id}
-              {...blogpost}
-              className="cursor-pointer"
-              onClick={blogPostShowHandler(blogpost.id)}
-              actions={
-                <div className="w-full grid grid-cols-2 gap-3">
-                  <button
-                    onClick={editHandler(blogpost.id)}
-                    className="btn btn-warning flex items-center px-0 justify-center"
-                  >
-                    <AiFillEdit />
-                    Edit
-                  </button>
-                  <button
-                    onClick={deleteBlog(blogpost.id)}
-                    className="btn btn-danger flex items-center px-0 justify-center"
-                  >
-                    <AiOutlineDelete />
-                    Delete
-                  </button>
-                </div>
-              }
-            />
-          ))}
-        </BlogPost>
+        <div className="flex justify-start max-w-[80rem] mx-auto mb-3">
+          <SearchInput onChange={searchHandler} />
+        </div>
+        <BlogPost
+          blogposts={blogPostFilteredList}
+          onEdit={editBlog}
+          onDelete={deleteBlog}
+          onShow={showBlog}
+        ></BlogPost>
       </Main>
       <Footer />
     </div>

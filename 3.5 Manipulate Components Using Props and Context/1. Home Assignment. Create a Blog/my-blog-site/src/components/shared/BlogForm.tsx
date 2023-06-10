@@ -1,22 +1,23 @@
 import React, { useEffect, useId, useRef } from 'react';
 import Input from '../common/Input';
 import TextArea from '../common/TextArea';
-import { IBlogPost, IBlogPostUserInputs } from '../../hooks/useBlogPost';
-import { profilerOnRender } from '../../utils';
+import { IBlogPost } from '../../hooks/useBlogPost';
+
+export type IBlogPostEditProps = IBlogPost & { index: number };
 
 type BlogFormProps = Omit<JSX.IntrinsicElements['form'], 'onSubmit'> & {
-  editProps?: IBlogPost;
-  onSubmit?: (inputs: IBlogPostUserInputs) => void;
-  onUpdate?: (id: IBlogPost['id'], inputs: IBlogPostUserInputs) => void;
-  onCancel?: () => void;
+  editProps?: IBlogPostEditProps;
+  onSubmit(inputs: IBlogPost): void;
+  onUpdate(index: number, inputs: IBlogPost): void;
+  onCancel(): void;
 };
 
-const BlogForm = React.memo((props: BlogFormProps) => {
+export default function BlogForm(props: BlogFormProps) {
   const { onSubmit, onUpdate, onCancel, editProps, ...attrs } = props;
   const id = useId();
   const form = useRef<HTMLFormElement>(null);
 
-  const setInputValues = (params: IBlogPostUserInputs) => {
+  const setInputValues = (params: IBlogPost) => {
     if (!form.current) throw new Error('form not found');
     const { bookTitle, author, content, date } = form.current;
     bookTitle.value = params.title;
@@ -25,10 +26,9 @@ const BlogForm = React.memo((props: BlogFormProps) => {
     date.value = params.date;
   };
 
-  const getInputValues = (): IBlogPostUserInputs => {
+  const getInputValues = (): IBlogPost => {
     if (!form.current) throw new Error('form not found');
     const { bookTitle, author, content, date } = form.current;
-    if (!editProps) throw new Error('no data found');
     return {
       title: bookTitle.value,
       author: author.value,
@@ -52,7 +52,7 @@ const BlogForm = React.memo((props: BlogFormProps) => {
 
     (() => {
       if (!editProps) return onSubmit?.(inputs);
-      onUpdate?.(editProps.id, inputs);
+      onUpdate?.(editProps.index, inputs);
     })();
 
     setInputValues({
@@ -94,6 +94,4 @@ const BlogForm = React.memo((props: BlogFormProps) => {
       </div>
     </form>
   );
-});
-
-export default BlogForm;
+}

@@ -57,10 +57,10 @@ code {
   }
 
   .form-control {
-    @apply w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+    @apply w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out text-left;
   }
   .form-control-label {
-    @apply leading-7 text-sm text-gray-600;
+    @apply leading-7 text-sm text-gray-600 text-left;
   }
   .btn {
     @apply text-white border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg;
@@ -85,6 +85,28 @@ code {
     background: var(--warning-color);
   }
   .btn-info {
+    background: var(--info-color);
+  }
+
+  .bg-primary {
+    background: var(--primary-color);
+  }
+  .bg-secondary {
+    background: var(--secondary-color);
+  }
+  .bg-tertiary {
+    background: var(--tertiary-color);
+  }
+  .bg-success {
+    background: var(--success-color);
+  }
+  .bg-danger {
+    background: var(--danger-color);
+  }
+  .bg-warning {
+    background: var(--warning-color);
+  }
+  .bg-info {
     background: var(--info-color);
   }
 
