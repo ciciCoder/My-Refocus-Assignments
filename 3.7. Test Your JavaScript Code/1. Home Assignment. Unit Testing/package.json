@@ -1,0 +1,12 @@
+{
+  "name": "unit_testing",
+  "version": "1.0.0",
+  "main": "javascript_function.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^29.5.0"
+  }
+}
