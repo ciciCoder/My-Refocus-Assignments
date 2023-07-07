@@ -1,0 +1,68 @@
+@tailwind utilities;
+@tailwind components;
+@tailwind base;
+
+@layer utilities {
+  .bordered__text {
+    @apply drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)];
+  }
+}
+
+@layer components {
+  .Home .home__parallax__h2 {
+    text-transform: uppercase;
+    font-size: 64px;
+    color: white;
+    @apply bordered__text tracking-wide font-light;
+  }
+  .Home .home__parallax__button {
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    line-height: 46px;
+    height: 46px;
+    font-style: normal;
+    font-weight: 600;
+    background-color: #57504d;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    border-width: 0px;
+    padding-left: 62px;
+    padding-right: 62px;
+  }
+
+  .Home .home__parallax__button:hover {
+    @apply bg-stone-800;
+  }
+}
+
+.animate__slideInLeft {
+  -webkit-animation-name: cslideInLeft !important;
+  animation-name: cslideInLeft !important;
+}
+
+.animate__animated {
+  opacity: 0;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: var(--animate-duration);
+  animation-duration: var(--animate-duration);
+  -webkit-animation-fill-mode: forwards !important;
+  animation-fill-mode: forwards !important;
+}
+
+@keyframes cslideInLeft {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "title": "THE SAPPHIRE BLOC",
+    "btnText": "View The Sapphire Bloc Project",
+    "to": "/projects",
+    "src": "https://designhq.net/wp-content/uploads/2020/07/Design-Hirayama-Quesada-The-Sapphire-Block-Kohler-PropertyGuru-Asia-Property-Awards-20200701.jpg"
+  },
+  {
+    "title": "HOMES",
+    "btnText": "View Home Projects",
+    "to": "/projects?category=homes",
+    "src": "https://designhq.net/wp-content/uploads/2020/07/Design-Hirayama-Quesada-Nuvali-House-Asia-Pacific-Propert-Awards-20200701.jpg"
+  },
+  {
+    "title": "hotels",
+    "btnText": "View hotel Projects",
+    "to": "/projects?category=hotels",
+    "src": "https://designhq.net/wp-content/uploads/2020/07/Design-Hirayama-Quesada-NCCA-Haligi-Ng-Dangal-Awards-20200701.jpg"
+  },
+  {
+    "title": "retaurants",
+    "btnText": "View restaurant Projects",
+    "to": "/projects?category=restaurants",
+    "src": "https://designhq.net/wp-content/uploads/2018/08/Design-Hirayama-Quesada-Interior-Design-Philippines-Restaurant-Projects-1080p-Optimized.jpg"
+  },
+  {
+    "title": "HIGH RISE AMENITIES",
+    "btnText": "view high rise amenities projects",
+    "to": "/projects?category=high-rise-amenities",
+    "src": "https://designhq.net/wp-content/uploads/2018/08/Design-Hirayama-Quesada-Interior-Design-Philippines-High-Rise-Projects-1080p-Optimized.jpg",
+    "titleColor": "#5F6872"
+  },
+  {
+    "title": "show rooms",
+    "btnText": "view showroom projects",
+    "to": "/projects?category=showrooms",
+    "src": "https://designhq.net/wp-content/uploads/2018/08/Design-Hirayama-Quesada-Interior-Design-Philippines-Showroom-Projects-1080p-Optimized.jpg",
+    "titleColor": "#5F6872"
+  }
+]

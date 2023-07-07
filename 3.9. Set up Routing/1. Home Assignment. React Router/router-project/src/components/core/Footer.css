@@ -1,0 +1,13 @@
+.Footer {
+  /* opacity: 0; */
+}
+
+.Footer .text {
+  font-family: Raleway;
+  font-size: 12px;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: left;
+}

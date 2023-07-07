@@ -1,0 +1,116 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+ */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h2 {
+    @apply text-6xl;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    display: block;
+    padding: 10px 62px;
+    width: fit-content;
+    color: white;
+    @apply bg-stone-700;
+  }
+
+  .btn-primary:hover {
+    @apply bg-stone-800;
+  }
+}
+
+@layer utilities {
+  .parallax {
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 300px;
+  }
+
+  .parallax__group {
+    position: relative;
+    height: calc(100vh - 60px);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax__layer1 {
+    z-index: 2;
+  }
+
+  .parallax__layer2 {
+    z-index: 3;
+  }
+
+  .parallax__layer3 {
+    z-index: 4;
+  }
+
+  .parallax__layer4 {
+    z-index: 5;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(0.7);
+    transform: translateZ(90px) scale(0.7);
+    z-index: 1;
+  }
+
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+
+  .bordered__text {
+    @apply drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)];
+  }
+}
+
+.lazy-img {
+  transition-duration: 0.5s;
+  opacity: 0;
+}
+
+.lazy-img.loaded {
+  opacity: 1;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #474747;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

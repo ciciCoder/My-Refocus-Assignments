@@ -1,0 +1,10 @@
+.About p {
+  font-family: Josefin Slab;
+  font-size: 32px;
+  line-height: 32px;
+  font-style: normal;
+  font-weight: 300;
+  color: #222222;
+  text-decoration: none;
+  text-align: left;
+}

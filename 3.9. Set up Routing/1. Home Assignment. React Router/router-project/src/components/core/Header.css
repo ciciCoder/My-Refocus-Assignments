@@ -1,0 +1,33 @@
+@tailwind components;
+
+@layer components {
+  /* .Header,
+  .Header .logo img {
+    transition-duration: 0.5s;
+  }
+
+  .Header.mini {
+    @apply shadow-lg;
+  }
+
+  .Header.mini,
+  .Header.mini .logo img,
+  .Header.mini .social {
+    height: 60px;
+  }
+
+  .Header.mini .logo a > img {
+    width: 118.41px;
+  }
+
+  .Header.mini .logo .Header .navlink {
+    transition-duration: 0.5s;
+  } */
+
+  .Header .navlink.active,
+  .Header .navlink:hover {
+    color: #ddaa4d;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+  }
+}
